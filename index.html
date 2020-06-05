@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teck Foo Yap's Resume</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="startbootstrap-resume/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--[if IE 9]>
+        <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lte IE 8]>
+        <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie8.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/g/html5shiv@3.7.3"></script>
+    <![endif]-->
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="startbootstrap-resume/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="startbootstrap-resume/vendor/devicons/css/devicons.min.css" rel="stylesheet">
+    <link href="startbootstrap-resume/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="startbootstrap-resume/css/resume.min.css" rel="stylesheet">
+    <link href="assets/css/global.css" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+
+<body>
+    <div id="resume-app">
+        <div :data-info="message">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                    <span class="d-block d-lg-none">Teck Foo Yap</span>
+                    <span class="d-none d-lg-block" v-on:click="changePrimaryColor">
+                        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/takoyaki.gif" alt="">
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <nav-link></nav-link>
+            </nav>
+
+            <div class="container-fluid p-0">
+
+                <about></about>
+                <experience></experience>
+                <voluntary-experience></voluntary-experience>
+                <education></education>
+                <skills></skills>
+                <interest></interest>
+
+                <!-- <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
+                    <div class="my-auto">
+                        <h2 class="mb-5">Awards &amp; Certifications</h2>
+                        <ul class="fa-ul mb-0">
+                            <li>
+                                <i class="fa-li fa fa-trophy text-warning"></i>
+                                <a href="https://app.pluralsight.com/profile/danielytf" target="_blank">
+                                    Pluralsight courses completion
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section> -->
+
+                <randombibleverse></randombibleverse>
+                <horoscope></horoscope>
+                <joke></joke>
+                <vvideo></vvideo>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/axios.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="startbootstrap-resume/vendor/jquery/jquery.min.js"></script>
+    <script src="startbootstrap-resume/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        var ieVersion = null;
+    </script>
+
+    <!--[if IE 9]>
+        <script>
+            ieVersion = 9;
+        $.noConflict(true);
+        </script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
+<![endif]-->
+    <!--[if lte IE 8]>
+          <script>
+        $.noConflict(true);
+        </script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie8.min.js"></script>
+  
+<![endif]-->
+
+    <!--[if (IE 8)|(IE 9)]><script src="//cdn.rawgit.com/gfdev/javascript-jquery-transport-xdr/master/dist/jquery.transport.xdr.min.js"></script><![endif]-->
+
+    <!-- Plugin JavaScript -->
+    <script src="startbootstrap-resume/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- <script src="assets/js/baffle.min.js"></script> -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="startbootstrap-resume/js/resume.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/2.3.2/moment-duration-format.min.js"></script>
+
+    <!-- Templates -->
+    <script type="text/x-template" id="nav-link-template">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li v-for="nav in navs" class="nav-item">
+                    <a class="nav-link js-scroll-trigger" :href="nav.link">{{nav.text}}</a>
+                </li>
+            </ul>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="about-template">
+        <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+            <div class="my-auto">
+                <h1 class="mb-0"><span id="void">Teck Foo</span>
+                    <span class="text-primary">Yap</span>
+                    <img class="img-emoji" src="assets/emoji/1.png" alt="">
+                </h1>
+                <div class="subheading mb-5">
+                    <a id="email-address" href="mailto:danielytf@gmail.com">danielytf@gmail.com</a>
+                </div>
+                <p class="mb-5">
+                    A multi skilled professional with over 8 years experience in software/web development.
+                    <br />
+                    <br /> A highly-motivated individual, who has worked on multi range of products in developing and maintaining software products in Agile environment. Demonstrates strong analytical thinking skill, with ability to communicate to different
+                    internal and external customers, and able to successfully satisfy the needs from stakeholders.
+                </p>
+                <ul class="list-inline list-social-icons mb-0">
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/teckfooyap" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/teckfooyap" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/daniel-yap-aeiou/" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://github.com/daniel-yap-aeiou" target="_blank">
+                            <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="experience-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+            <div class="my-auto">
+                <h2 class="mb-5">Experience</h2>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Junior Software Developer</h3>
+                        </div>
+                        <div class="subheading mb-3">Bidenergy</div>
+                        <div>
+                            <ul>
+                                <li>Maintained web application (SaaS platform).</li>
+                                <li>Created and maintained tools for managing data.</li>
+                                <li>Data parsing, created reports, automation and application monitoring.</li>
+                                <li>Provided system setup and installation support.</li>
+                                <li>Production support.</li>
+                            </ul>
+                            <span>
+                                Tools: Html, Css, Javascript (AngularJs, VueJs, jQuery), C# Asp.Net Mvc, WebApi,
+                                Mysql, Sql
+                                Server, Mongodb, Wordpress, Nhibernate, Jenkins, GitHub, AWS, Jira, Trello,
+                                Hangfire
+                                <br /> Platform: Windows and Ubuntu
+                            </span>
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{expDuration5}}</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Web Developer</h3>
+                        </div>
+                        <div class="subheading mb-3">Potentiality</div>
+                        <div>
+                            <ul>
+                                <li>Provided support to clients for managing websites.</li>
+                                <li>Implemented and maintained clients' websites.</li>
+                            </ul>
+                            <span>
+                                Tools: Html, Css, Javascript, Jquery, C#, Wordpress
+                            </span>
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{expDuration4}}</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Junior .NET Programmer</h3>
+                        </div>
+                        <div class="subheading mb-3">Axima</div>
+                        <div>
+                            <ul>
+                                <li>Maintained web application for internal use.</li>
+
+                            </ul>
+                            <span>
+                                Tools: Html, Css, Javascript, Jquery, C# Asp.Net Mvc, Sql, Linq, Entity
+                                Framework
+                            </span>
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{expDuration3}}</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Graduate Software Developer</h3>
+                        </div>
+                        <div class="subheading mb-3">Adslot</div>
+                        <div>
+                            <ul>
+                                <li>Developed and maintained Sales of Ads space upfront system.</li>
+                                <li>Enhancements and defects fixes of web application.</li>
+                            </ul>
+                            <span>
+                                Tools: Html, Css, Javascript, Jquery, C# Asp.Net Mvc, Sql
+                            </span>
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{expDuration2}}</span>
+                    </div>
+                </div>
+
+
+                <div class="resume-item d-flex flex-column flex-md-row">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Software Engineer Internship</h3>
+                        </div>
+                        <div class="subheading mb-3">Thales</div>
+                        <div>
+                            <ul>
+                                <li>Provided metrics reports to manager</li>
+                                <li>Developed and integrated data synchronization tools with clients used by both in-house software developers and external clients</li>
+                                <li>Written scripts for environment development and deployment across all platforms
+                                </li>
+                                <li>Provided software defect tools manual and assistance training to new developers
+                                </li>
+                                <li>Administrated Linux environment</li>
+                            </ul>
+                            <span>
+                                Tools: HTML, CSS, Javascript (jQuery), Perl, Linux Shell Scripting<br />
+                                Platform: Windows and Linux
+                            </span>
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{expDuration1}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="voluntary-experience-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="voluntaryexperience">
+            <div class="my-auto">
+                <h2 class="mb-5">Voluntary Experience</h2>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Web Application Developer</h3>
+                        </div>
+                        <div class="subheading mb-3">Self Employed</div>
+                        <div>
+                            <ul>
+                                <li>Developed a website for advertising and selling columbarium.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{expDuration3}}</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Web Developer</h3>
+                        </div>
+                        <div class="subheading mb-3">Self Employed</div>
+                        <div>
+                            <ul>
+                                <li>To assist in improving and developing personal carer record system.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{expDuration2}}</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Web Developer</h3>
+                        </div>
+                        <div class="subheading mb-3">Freelance</div>
+                        <div>
+                            <ul>
+                                <li>Website maintenance for a client.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{expDuration1}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="education-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+            <div class="my-auto">
+                <h2 class="mb-5">Education</h2>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">RMIT University</h3>
+                        </div>
+
+                        <div class="subheading mb-3">Bachelor of Software Engineering</div>
+                        <div></div>
+                        <p></p>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{eduDuration4}}</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">Trinity College, University of Melbourne</h3>
+                        </div>
+
+                        <div class="subheading mb-3">Foundation Studies</div>
+                        <p></p>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{eduDuration3}}</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">SMJK Sam Tet</h3>
+                        </div>
+
+                        <div class="subheading mb-3">Higher Education</div>
+                        <p></p>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{eduDuration2}}</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row mb-5">
+                    <div class="resume-content mr-auto">
+                        <div class="typewriter">
+                            <h3 class="mb-0">SRJK (C) Sam Tet</h3>
+                        </div>
+
+                        <div class="subheading mb-3">Primary School Education</div>
+                        <p></p>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary period-range">{{eduDuration1}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="skills-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+            <div class="my-auto">
+                <h2 class="mb-5">Skills</h2>
+
+                <div class="subheading mb-3">Programming Languages &amp; Tools</div>
+                <ul>
+                    <li>Requirement gathering, estimation and design</li>
+                    <li>Unit Testing</li>
+                    <li>Reporting</li>
+                    <li>Automation</li>
+                    <li>Prioritizing tasks</li>
+                    <li>Proficient in C#, Asp.Net Framework, .Net Core, WebApi, Sql, Mysql, Mongo (Nosql), Typescript, AngularJs, Vuejs, Javascript, Html, Css</li>
+                    <li>Web, digital, cloud platform</li>
+                    <li>Windows and Linux environment</li>
+                    <li>GitHub and BitBucket</li>
+                    <li>Jira and Trello</li>
+                    <li>IT support</li>
+                </ul>
+
+                <div class="subheading mb-3">Workflow</div>
+                <ul class="fa-ul mb-0">
+                    <li>
+                        <i class="fa-li fa fa-check"></i> Mobile-First, Responsive Design</li>
+                    <li>
+                        <i class="fa-li fa fa-check"></i> Cross Browser Testing &amp; Debugging</li>
+                    <li>
+                        <i class="fa-li fa fa-check"></i> Cross Functional Teams</li>
+                    <li>
+                        <i class="fa-li fa fa-check"></i> Agile Development &amp; Scrum</li>
+                </ul>
+
+                <br /><br />
+                <div id="table_div"></div>
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="interest-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
+            <div class="my-auto">
+                <h2 class="mb-5">Interests</h2>
+                <p>Apart from being a sofware developer, I enjoy most of my time doing online courses to upskill and playing computer games for relaxation.</p>
+                <p class="mb-0">I also enjoy going to the gym and spending time with my partner. Travelling and looking for great food are also part of my interests.</p>
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="randombibleverse-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="randombibleverse">
+            <div class="my-auto">
+                <h2 class="mb-5">
+                    <span data-toggle="tooltip" data-placement="top" title="<img src='./assets/coffee-1s-500px.gif' alt='...' style='height: 50px; width: 50px;' />" data-html="true">
+                        A Random Bible Verse
+                    </span>
+
+                    <button type="button" class="btn btn-dark" v-on:click="getRandomVerse"><i
+                            class="fa fa-refresh"></i></button> &nbsp;
+                    <img src="./assets/ajax-loader.gif" alt="Loading ..." style="display: none;" id="loader3" />
+                </h2>
+                <p id="newRandomVerse"></p>
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="horoscope-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="horoscope">
+            <div class="my-auto">
+                <h2 class="mb-5">
+                    <span data-toggle="tooltip" data-placement="top" title="Hotstar!">
+                        Horoscope of the day
+                    </span>
+                </h2>
+
+                <div class="input-group">
+                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                        <option selected value="">Choose...</option>
+                        <option value="aries">Aries</option>
+                        <option value="taurus">Taurus</option>
+                        <option value="gemini">Gemini</option>
+                        <option value="cancer">Cancer</option>
+                        <option value="leo">Leo</option>
+                        <option value="virgo">Virgo</option>
+                        <option value="libra">Libra</option>
+                        <option value="scorpio">Scorpio</option>
+                        <option value="sagittarius">Sagittarius</option>
+                        <option value="capricorn">Capricorn</option>
+                        <option value="aquarius">Aquarius</option>
+                        <option value="pisces">Pisces</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark" type="button" v-on:click="getHoroscope">Submit</button> &nbsp;
+                        <img src="./assets/ajax-loader.gif" alt="Loading ..." style="display: none;" id="loader" />
+                    </div>
+                </div>
+                <br />
+                <p id="newHoroscope"></p>
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="joke-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="joke">
+            <div class="my-auto">
+                <h2 class="mb-5">
+                    <span>
+                        A Joke
+                    </span>
+
+                    <button type="button" class="btn btn-dark" v-on:click="getJoke"><i
+                            class="fa fa-refresh"></i></button> &nbsp;
+                    <img src="./assets/ajax-loader.gif" alt="Loading ..." style="display: none;" id="loader2" />
+                </h2>
+                <p id="newJoke"></p>
+            </div>
+        </section>
+    </script>
+
+    <script type="text/x-template" id="video-template">
+        <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="vvideo">
+            <div class="my-auto">
+                <h2 class="mb-5">
+                    <span>A Video</span>
+                </h2>
+                <div>
+                    <iframe width="350" height="315" src="https://www.youtube.com/embed/wvc4mPF1u1w" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+    </script>
+
+    <script>
+        var browser = (function() {
+            var test = function(regexp) {
+                return regexp.test(window.navigator.userAgent);
+            }
+            switch (true) {
+                case test(/edge/i):
+                    return "edge";
+                case test(/opr/i) && (!!window.opr || !!window.opera):
+                    return "opera";
+                case test(/chrome/i) && !!window.chrome:
+                    return "chrome";
+                case test(/trident/i):
+                    return "ie";
+                case test(/firefox/i):
+                    return "firefox";
+                case test(/safari/i):
+                    return "safari";
+                default:
+                    return "other";
+            }
+        })();
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            if (browser === "ie") {
+                $.getScript("assets/js/app-ie.vue.js", function(data, textStatus, jqxhr) {
+                    console.log("Load was performed.");
+                });
+                window.setTimeout(function() {
+                    if (ieVersion === 9) {
+                        $('select#inputGroupSelect04').attr('class', '');
+                        $('select#inputGroupSelect04').addClass('select-ie');
+                    }
+                }, 1500);
+            } else {
+                $.getScript("assets/js/app.vue.js", function(data, textStatus, jqxhr) {
+                    console.log("Load was performed.");
+                });
+            }
+        });
+    </script>
+
+    <!-- <![if !IE]>
+        <script src="assets/js/app-ie.vue.js" type="text/javascript"></script>
+    <![endif]> -->
+
+    <script src="assets/js/app.vue.js" type="text/javascript"></script>
+</body>
+
+</html>

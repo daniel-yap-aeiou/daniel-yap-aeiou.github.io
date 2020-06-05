@@ -1,0 +1,123 @@
+
+.loading-container {
+    height: 1000px;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #3e8e55;
+}
+
+/* --- */
+#sideNav .navbar-brand .img-profile
+{
+
+    border: 1px dashed #fff !important;
+}
+
+/* --- */
+.bg-primary {
+    background-color: #3e8e55 !important;
+    -webkit-transition: background-color 800ms linear;
+    -moz-transition: background-color 800ms linear;
+    -o-transition: background-color 800ms linear;
+    -ms-transition: background-color 800ms linear;
+    transition: background-color 800ms linear;
+}
+
+/* --- */
+.text-primary {
+    color: #3e8e55 !important;
+    -webkit-transition: color 800ms linear;
+    -moz-transition: color 800ms linear;
+    -o-transition: color 800ms linear;
+    -ms-transition: color 800ms linear;
+    transition: color 800ms linear;
+}
+
+.list-social-icons a:active,
+.list-social-icons a:focus,
+.list-social-icons a:hover {
+    color: #3e8e55 !important;
+}
+
+a#email-address,
+a#email-address:active, 
+a#email-address:focus, 
+a#email-address:hover {
+    color: #3e8e55 !important;
+}
+
+/* --- */
+.img-emoji {
+    width: 100px;
+    height: 100px;
+}
+
+/* --- */
+.list-inline-item {
+    transform: translatey(0px);
+    animation: float 6s ease-in-out infinite;
+    border-radius: 50%;
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+/* --- */
+.period-range {
+    -webkit-transition: font-weight 800ms linear;
+    -moz-transition: font-weight 800ms linear;
+    -o-transition: font-weight 800ms linear;
+    -ms-transition: font-weight 800ms linear;
+    transition: font-weight 800ms linear;
+}
+
+.period-range:hover {
+    cursor: pointer;
+    font-weight: 900;
+}
+
+/* --- */
+.typewriter h3 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid #3e8e55; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .0em; /* Adjust as needed */
+    animation: 
+      typing 5s steps(40, end) infinite,
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #3e8e55; }
+  }
+
+  .select-ie {
+      width: 300px !important;
+      padding: 15px !important;
+  }
