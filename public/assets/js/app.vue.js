@@ -179,7 +179,7 @@ var skills = {
             //data.addColumn('boolean', 'Full Time Employee');
             data.addRows([
                 ['C# (ASP.NET MVC, .NET Core MVC, WebAPI)', { v: 80, f: '80%' }],
-                ['Javascript (Typescript, AngularJs, VueJs)', { v: 80, f: '80%' }],
+                ['Javascript (Typescript, ReactJs, AngularJs, VueJs)', { v: 80, f: '80%' }],
                 ['HTML/CSS', { v: 80, f: '80%' }],
                 ['SQL/MySQL', { v: 80, f: '80%' }],
                 ['NoSQL', { v: 70, f: '75%' }]
