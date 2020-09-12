@@ -592,21 +592,21 @@
         })();
 
         document.addEventListener("DOMContentLoaded", function(event) {
-            if (browser === "ie") {
-                $.getScript("assets/js/app-ie.vue.js", function(data, textStatus, jqxhr) {
-                    console.log("Load was performed.");
-                });
-                window.setTimeout(function() {
-                    if (ieVersion === 9) {
-                        $('select#inputGroupSelect04').attr('class', '');
-                        $('select#inputGroupSelect04').addClass('select-ie');
-                    }
-                }, 1500);
-            } else {
-                $.getScript("assets/js/app.vue.js", function(data, textStatus, jqxhr) {
-                    console.log("Load was performed.");
-                });
-            }
+            <!-- if (browser === "ie") { -->
+                <!-- $.getScript("assets/js/app-ie.vue.js", function(data, textStatus, jqxhr) { -->
+                    <!-- console.log("Load was performed."); -->
+                <!-- }); -->
+                <!-- window.setTimeout(function() { -->
+                    <!-- if (ieVersion === 9) { -->
+                        <!-- $('select#inputGroupSelect04').attr('class', ''); -->
+                        <!-- $('select#inputGroupSelect04').addClass('select-ie'); -->
+                    <!-- } -->
+                <!-- }, 1500); -->
+            <!-- } else { -->
+                <!-- $.getScript("assets/js/app.vue.js", function(data, textStatus, jqxhr) { -->
+                    <!-- console.log("Load was performed."); -->
+                <!-- }); -->
+            <!-- } -->
         });
     </script>
 
