@@ -1,4 +1,4 @@
-const navs = [
+const navs1 = [
     { link: "#about", text: "About" },
     { link: "#experience", text: "Experience" },
     { link: "#voluntaryexperience", text: "Voluntary Experience" },
@@ -16,7 +16,7 @@ var navLink = {
     template: '#nav-link-template',
     data: function () {
         return {
-            navs
+            navs: navs1
         }
     },
     methods: {}
