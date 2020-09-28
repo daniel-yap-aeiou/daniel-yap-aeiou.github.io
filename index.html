@@ -80,8 +80,12 @@
             </div>
         </div>
     </div>
-
-    <script src="assets/js/vue.js"></script>
+    <![if IE]>
+        <script src="assets/js/vue.js"></script>
+    <![endif]>
+    <![if !IE]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.0/vue.global.js"></script>
+	<![endif]>
     <script src="assets/js/axios.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
@@ -489,7 +493,7 @@
         <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="randombibleverse">
             <div class="my-auto">
                 <h2 class="mb-5">
-                    <span data-toggle="tooltip" data-placement="top" title="<img src='./assets/coffee-1s-500px.gif' alt='...' style='height: 50px; width: 50px;' />" data-html="true">
+                    <span>
                         A Random Bible Verse
                     </span>
 

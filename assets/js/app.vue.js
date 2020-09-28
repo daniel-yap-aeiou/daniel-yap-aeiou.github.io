@@ -320,7 +320,8 @@ function isCrappyIE() {
 }
 
 if (!isCrappyIE()) {
-    new Vue({
+
+    const app = {
         el: '#resume-app',
         components: {
             'nav-link': navLink,
@@ -419,7 +420,8 @@ if (!isCrappyIE()) {
                 $(".img-profile").attr('src', vm.profileImages[vm.imageProfileCounter++]);
             }
         }
-    });
+    };
 
-
+	Vue.createApp(app).mount('#resume-app')
+	
 }
