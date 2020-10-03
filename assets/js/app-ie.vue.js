@@ -312,7 +312,7 @@ var joke = {
         getJoke: function () {
             $('#loader2').show();
 
-            if (browser === "ie" && ieVersion && ieVersion === 9) {
+            if (browser === "ie") {
                 $.support.cors = true;
                 $.ajax({
                     type: 'GET',
