@@ -252,7 +252,7 @@ var horoscope = {
             $('#inputGroupSelect04').css('border', '1px solid #ced4da');
             $('#loader').show();
 
-            if (browser === "ie" && ieVersion && ieVersion === 9) {
+            if (browser === "ie") {
                 $.support.cors = true;
                 $.ajax({
                     type: 'POST',
