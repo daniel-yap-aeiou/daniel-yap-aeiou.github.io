@@ -317,7 +317,7 @@ var joke = {
                 $.ajax({
                     type: 'GET',
                     url: 'https://icanhazdadjoke.com/',
-                    contentType: 'application/json',
+                    //contentType: 'application/json',
                     crossDomain: true,
                     dataType: 'json',
                     cache: false,
