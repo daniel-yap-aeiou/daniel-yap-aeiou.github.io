@@ -101,11 +101,11 @@ var voluntaryExperience = {
         },
         expDuration3: function () {
             var dateFrom = moment(new Date(2019, 01));
-            var dateTo = moment(new Date());
+            var dateTo = moment(new Date(2020, 01));
             var months = dateTo.diff(dateFrom, 'months');
             var duration = moment.duration(months, 'months');
             var result = duration.format("y [years]");
-            return "Jan 2019 - Present" + " (" + result + ")";
+            return "Jan 2019 - Jan 2020" + " (" + result + ")";
         },
     },
     methods: {}
@@ -381,109 +381,126 @@ var vvideo = {
     methods: {}
 }
 
-new Vue({
-    el: '#resume-app',
-    components: {
-        'nav-link': navLink,
-        'about': about,
-        'experience': experience,
-        'voluntary-experience': voluntaryExperience,
-        'education': education,
-        'skills': skills,
-        'interest': interest,
-        'randombibleverse': randombibleverse,
-        'horoscope': horoscope,
-        'joke': joke,
-        'vvideo': vvideo
-    },
-    data: function () {
-        return {
-            message: 'This is my resume',
-            existingColor: '',
-            colors: ["black",
-                // google color code
-                "#4285F4", "#34A853", "#FBBC05", "#EA4335",
-                // rainbow
-                "#ff2400", "#e81d1d", "#e8b71d", "#e3e81d", "#1de840", "#1ddde8", "#2b1de8", "#dd00f3", "#dd00f3"
-            ],
-            emojiCounter: 1,
-            profileImages: ["assets/malaysia.gif", "assets/australia.gif", "assets/takoyaki.gif"],
-            imageProfileCounter: 0,
-        }
-    },
-    created: function () {
-        var vm = this;
-        setInterval(function () { vm.changeImageProfile(); }, 3600);
-        setInterval(function () { vm.changeImageEmoji(); }, 1000);
-    },
-    mounted: function () {
-
-        try {
-            $('[data-toggle="tooltip"]').tooltip();
-			
-			/* animation */
-			$('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-				if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-				  var target = $(this.hash);
-				  target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-				  if (target.length) {
-					$('html, body').animate({
-					  scrollTop: (target.offset().top)
-					}, 1000, "easeInOutExpo");
-					return false;
-				  }
-				}
-			  });
-
-			  // Closes responsive menu when a scroll trigger link is clicked
-			  $('.js-scroll-trigger').click(function() {
-				$('.navbar-collapse').collapse('hide');
-			  });
-
-			  // Activate scrollspy to add active class to navbar items on scroll
-			  $('body').scrollspy({
-				target: '#sideNav'
-			  });
-        }
-        catch (error) {
-        }
-    },
-    methods: {
-        getRandomNumber: function () {
-            var vm = this;
-            var random = Math.floor((Math.random() * vm.colors.length) + 1);
-            return random;
-        },
-        changePrimaryColor: function () {
-            var vm = this;
-            var random = vm.getRandomNumber();
-
-            if (vm.existingColor === vm.colors[random]) {
-                if (random === vm.colors.length)
-                    random = 0;
-                else
-                    random += 1;
-            }
-
-            //$(".bg-primary").attr('style', 'background-color: ' + colors[random] + ' !important;');
-            $(".text-primary").attr('style', 'color: ' + vm.colors[random] + ' !important;');
-        },
-        changeImageEmoji: function () {
-            var vm = this;
-
-            if (vm.emojiCounter === 46)
-                vm.emojiCounter = 1;
-
-            $(".img-emoji").attr('src', 'assets/emoji/' + vm.emojiCounter++ + '.png');
-        },
-        changeImageProfile: function () {
-            var vm = this;
-
-            if (vm.imageProfileCounter == vm.profileImages.length + 1)
-                vm.imageProfileCounter = 0;
-
-            $(".img-profile").attr('src', vm.profileImages[vm.imageProfileCounter++]);
-        }
+function isCrappyIE() {
+    var ua = window.navigator.userAgent;
+    var crappyIE = false;
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {// IE 10 or older => return version number        
+        crappyIE = true;
     }
-});
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {// IE 11 => return version number        
+        crappyIE = true;
+    }
+    return crappyIE;
+}
 
+if (isCrappyIE()) {
+
+	new Vue({
+		el: '#resume-app',
+		components: {
+			'nav-link': navLink,
+			'about': about,
+			'experience': experience,
+			'voluntary-experience': voluntaryExperience,
+			'education': education,
+			'skills': skills,
+			'interest': interest,
+			'randombibleverse': randombibleverse,
+			'horoscope': horoscope,
+			'joke': joke,
+			'vvideo': vvideo
+		},
+		data: function () {
+			return {
+				message: 'This is my resume',
+				existingColor: '',
+				colors: ["black",
+					// google color code
+					"#4285F4", "#34A853", "#FBBC05", "#EA4335",
+					// rainbow
+					"#ff2400", "#e81d1d", "#e8b71d", "#e3e81d", "#1de840", "#1ddde8", "#2b1de8", "#dd00f3", "#dd00f3"
+				],
+				emojiCounter: 1,
+				profileImages: ["assets/malaysia.gif", "assets/australia.gif", "assets/takoyaki.gif"],
+				imageProfileCounter: 0,
+			}
+		},
+		created: function () {
+			var vm = this;
+			setInterval(function () { vm.changeImageProfile(); }, 3600);
+			setInterval(function () { vm.changeImageEmoji(); }, 1000);
+		},
+		mounted: function () {
+
+			try {
+				$('[data-toggle="tooltip"]').tooltip();
+				
+				/* animation */
+				$('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+					if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+					  var target = $(this.hash);
+					  target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+					  if (target.length) {
+						$('html, body').animate({
+						  scrollTop: (target.offset().top)
+						}, 1000, "easeInOutExpo");
+						return false;
+					  }
+					}
+				  });
+
+				  // Closes responsive menu when a scroll trigger link is clicked
+				  $('.js-scroll-trigger').click(function() {
+					$('.navbar-collapse').collapse('hide');
+				  });
+
+				  // Activate scrollspy to add active class to navbar items on scroll
+				  $('body').scrollspy({
+					target: '#sideNav'
+				  });
+			}
+			catch (error) {
+			}
+		},
+		methods: {
+			getRandomNumber: function () {
+				var vm = this;
+				var random = Math.floor((Math.random() * vm.colors.length) + 1);
+				return random;
+			},
+			changePrimaryColor: function () {
+				var vm = this;
+				var random = vm.getRandomNumber();
+
+				if (vm.existingColor === vm.colors[random]) {
+					if (random === vm.colors.length)
+						random = 0;
+					else
+						random += 1;
+				}
+
+				//$(".bg-primary").attr('style', 'background-color: ' + colors[random] + ' !important;');
+				$(".text-primary").attr('style', 'color: ' + vm.colors[random] + ' !important;');
+			},
+			changeImageEmoji: function () {
+				var vm = this;
+
+				if (vm.emojiCounter === 46)
+					vm.emojiCounter = 1;
+
+				$(".img-emoji").attr('src', 'assets/emoji/' + vm.emojiCounter++ + '.png');
+			},
+			changeImageProfile: function () {
+				var vm = this;
+
+				if (vm.imageProfileCounter == vm.profileImages.length + 1)
+					vm.imageProfileCounter = 0;
+
+				$(".img-profile").attr('src', vm.profileImages[vm.imageProfileCounter++]);
+			}
+		}
+	});
+
+}

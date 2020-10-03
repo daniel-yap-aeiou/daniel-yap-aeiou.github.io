@@ -10,14 +10,6 @@
     <!-- Bootstrap core CSS -->
     <link href="startbootstrap-resume/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!--[if IE 9]>
-        <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie9.min.css" rel="stylesheet">
-    <![endif]-->
-    <!--[if lte IE 8]>
-        <link href="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/css/bootstrap-ie8.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/g/html5shiv@3.7.3"></script>
-    <![endif]-->
-
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
@@ -30,6 +22,7 @@
     <link href="assets/css/global.css" rel="stylesheet">
 
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+	<script type="text/javascript">"use strict";</script>
 </head>
 
 <body>
@@ -58,21 +51,6 @@
                 <education></education>
                 <skills></skills>
                 <interest></interest>
-
-                <!-- <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
-                    <div class="my-auto">
-                        <h2 class="mb-5">Awards &amp; Certifications</h2>
-                        <ul class="fa-ul mb-0">
-                            <li>
-                                <i class="fa-li fa fa-trophy text-warning"></i>
-                                <a href="https://app.pluralsight.com/profile/danielytf" target="_blank">
-                                    Pluralsight courses completion
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </section> -->
-
                 <randombibleverse></randombibleverse>
                 <horoscope></horoscope>
                 <joke></joke>
@@ -80,12 +58,9 @@
             </div>
         </div>
     </div>
-    <![if IE]>
-        <script src="assets/js/vue.js"></script>
-    <![endif]>
-    <![if !IE]>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.0/vue.global.js"></script>
-	<![endif]>
+	
+	<script src="assets/js/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.0/vue.global.prod.js"></script>
     <script src="assets/js/axios.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
@@ -97,28 +72,8 @@
         var ieVersion = null;
     </script>
 
-    <!--[if IE 9]>
-        <script>
-            ieVersion = 9;
-        $.noConflict(true);
-        </script>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie9.min.js"></script>
-<![endif]-->
-    <!--[if lte IE 8]>
-          <script>
-        $.noConflict(true);
-        </script>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/coliff/bootstrap-ie8/js/bootstrap-ie8.min.js"></script>
-  
-<![endif]-->
-
-    <!--[if (IE 8)|(IE 9)]><script src="//cdn.rawgit.com/gfdev/javascript-jquery-transport-xdr/master/dist/jquery.transport.xdr.min.js"></script><![endif]-->
-
     <!-- Plugin JavaScript -->
     <script src="startbootstrap-resume/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- <script src="assets/js/baffle.min.js"></script> -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!-- Custom scripts for this template -->
@@ -596,30 +551,23 @@
         })();
 
         document.addEventListener("DOMContentLoaded", function(event) {
-            <!-- if (browser === "ie") { -->
-                <!-- $.getScript("assets/js/app-ie.vue.js", function(data, textStatus, jqxhr) { -->
-                    <!-- console.log("Load was performed."); -->
-                <!-- }); -->
-                <!-- window.setTimeout(function() { -->
-                    <!-- if (ieVersion === 9) { -->
-                        <!-- $('select#inputGroupSelect04').attr('class', ''); -->
-                        <!-- $('select#inputGroupSelect04').addClass('select-ie'); -->
-                    <!-- } -->
-                <!-- }, 1500); -->
-            <!-- } else { -->
-                <!-- $.getScript("assets/js/app.vue.js", function(data, textStatus, jqxhr) { -->
-                    <!-- console.log("Load was performed."); -->
-                <!-- }); -->
-            <!-- } -->
+             if (browser === "ie") { 				 
+				var js_script = document.createElement('script');
+				js_script.type = "text/javascript";
+				js_script.src = "assets/js/app-ie.vue.js";
+				js_script.async = true;
+				document.getElementsByTagName('head')[0].appendChild(js_script);
+            } else { 
+				var js_script = document.createElement('script');
+				js_script.type = "text/javascript";
+				js_script.src = "assets/js/app.vue.js";
+				js_script.async = true;
+				document.getElementsByTagName('head')[0].appendChild(js_script);
+            }
         });
     </script>
 
-    <![if IE]>
-        <script src="assets/js/app-ie.vue.js" type="text/javascript"></script>
-    <![endif]>
-	<![if !IE]>
-	<script src="assets/js/app.vue.js" type="text/javascript"></script>
-	<![endif]>
+
 </body>
 
 </html>

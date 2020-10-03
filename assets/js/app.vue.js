@@ -104,11 +104,11 @@ var voluntaryExperience = {
         },
         expDuration3: function () {
             let dateFrom = moment(new Date(2019, 01));
-            let dateTo = moment(new Date());
+            let dateTo = moment(new Date(2020, 01));
             let months = dateTo.diff(dateFrom, 'months');
             let duration = moment.duration(months, 'months');
             let result = duration.format("y [years]");
-            return "Jan 2019 - Present" + " (" + result + ")";
+            return "Jan 2019 - Jan 2020" + " (" + result + ")";
         },
     },
     methods: {}
