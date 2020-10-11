@@ -22,7 +22,9 @@
     <link href="assets/css/global.css" rel="stylesheet">
 
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-	<script type="text/javascript">"use strict";</script>
+    <script type="text/javascript">
+        "use strict";
+    </script>
 </head>
 
 <body>
@@ -58,15 +60,15 @@
             </div>
         </div>
     </div>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.0/vue.global.prod.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script src="assets/js/vue.min.js"></script>
+    <script src="assets/js/vue.global.prod.js"></script>
+    <script src="assets/js/axios.min.js"></script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="startbootstrap-resume/vendor/jquery/jquery.min.js"></script>
     <script src="startbootstrap-resume/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="startbootstrap-resume/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="startbootstrap-resume/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="startbootstrap-resume/vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -74,8 +76,8 @@
 
     <!-- Custom scripts for this template -->
     <script src="startbootstrap-resume/js/resume.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/2.3.2/moment-duration-format.min.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/moment-duration-format.min.js"></script>
 
     <!-- Templates -->
     <script type="text/x-template" id="nav-link-template">
@@ -547,18 +549,18 @@
         })();
 
         document.addEventListener("DOMContentLoaded", function(event) {
-             if (browser === "ie") { 				 
-				var js_script = document.createElement('script');
-				js_script.type = "text/javascript";
-				js_script.src = "assets/js/app-ie.vue.js";
-				js_script.async = true;
-				document.getElementsByTagName('head')[0].appendChild(js_script);
-            } else { 
-				var js_script = document.createElement('script');
-				js_script.type = "text/javascript";
-				js_script.src = "assets/js/app.vue.js";
-				js_script.async = true;
-				document.getElementsByTagName('head')[0].appendChild(js_script);
+            if (browser === "ie") {
+                var js_script = document.createElement('script');
+                js_script.type = "text/javascript";
+                js_script.src = "assets/js/app-ie.vue.js";
+                js_script.async = true;
+                document.getElementsByTagName('head')[0].appendChild(js_script);
+            } else {
+                var js_script = document.createElement('script');
+                js_script.type = "text/javascript";
+                js_script.src = "assets/js/app.vue.js";
+                js_script.async = true;
+                document.getElementsByTagName('head')[0].appendChild(js_script);
             }
         });
     </script>
