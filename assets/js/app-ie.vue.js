@@ -1,7 +1,7 @@
 var navs = [
     { link: "#about", text: "About" },
     { link: "#experience", text: "Experience" },
-    { link: "#voluntaryexperience", text: "Voluntary Experience" },
+    { link: "#voluntaryexperience", text: "Voluntary Work" },
     { link: "#education", text: "Education" },
     { link: "#skills", text: "Skills" },
     { link: "#interests", text: "Interests" },
