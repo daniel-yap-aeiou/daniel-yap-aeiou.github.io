@@ -8,7 +8,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: #3e8e55;
+    background: #009dff;
 }
 
 /* --- */
@@ -20,7 +20,7 @@
 
 /* --- */
 .bg-primary {
-    background-color: #3e8e55 !important;
+    background-color: #009dff !important;
     -webkit-transition: background-color 800ms linear;
     -moz-transition: background-color 800ms linear;
     -o-transition: background-color 800ms linear;
@@ -30,7 +30,7 @@
 
 /* --- */
 .text-primary {
-    color: #3e8e55 !important;
+    color: #009dff !important;
     -webkit-transition: color 800ms linear;
     -moz-transition: color 800ms linear;
     -o-transition: color 800ms linear;
@@ -41,14 +41,14 @@
 .list-social-icons a:active,
 .list-social-icons a:focus,
 .list-social-icons a:hover {
-    color: #3e8e55 !important;
+    color: #009dff !important;
 }
 
 a#email-address,
 a#email-address:active, 
 a#email-address:focus, 
 a#email-address:hover {
-    color: #3e8e55 !important;
+    color: #009dff !important;
 }
 
 /* --- */
@@ -96,7 +96,7 @@ a#email-address:hover {
 /* --- */
 .typewriter h3 {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .15em solid #3e8e55; /* The typwriter cursor */
+    border-right: .15em solid #009dff; /* The typwriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .0em; /* Adjust as needed */
@@ -114,7 +114,7 @@ a#email-address:hover {
   /* The typewriter cursor effect */
   @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: #3e8e55; }
+    50% { border-color: #009dff; }
   }
 
   .select-ie {
