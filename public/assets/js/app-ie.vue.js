@@ -57,7 +57,7 @@ var experience = {
             var result = duration.format("y [years]");
             return "Feb 2013 - Feb 2015" + " (" + result + ")";
         },
-        expDuration4: function () {
+        expDurationfour: function () {
             var dateFrom = moment(new Date(2015, 07));
             var dateTo = moment(new Date(2016, 05));
             var months = dateTo.diff(dateFrom, 'months');
@@ -141,7 +141,7 @@ var education = {
             var result = duration.format("y [years]");
             return "2006 - 2006" + " (" + result + ")";
         },
-        eduDuration4: function () {
+        eduDurationfour: function () {
             var dateFrom = moment(new Date(2007, 01));
             var dateTo = moment(new Date(2011, 12));
             var months = dateTo.diff(dateFrom, 'months');
