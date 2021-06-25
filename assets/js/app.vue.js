@@ -182,7 +182,8 @@ var skills = {
                 ['Javascript (Typescript, ReactJs, AngularJs, VueJs)', { v: 80, f: '80%' }],
                 ['HTML/CSS', { v: 80, f: '80%' }],
                 ['SQL/MySQL', { v: 80, f: '80%' }],
-                ['NoSQL', { v: 70, f: '75%' }]
+                ['NoSQL', { v: 70, f: '75%' }],
+		['Assembly', {v: 30, f: '30%' }]
             ]);
 
             let table = new google.visualization.Table(document.getElementById('table_div'));
